@@ -12,6 +12,6 @@ var userCommand  = process.argv[2];
 
 var userInput = process.argv.splice(3, process.argv.length).join(' ');
 
-if  (userCommand === "movie"){
+if  (userCommand === "movie-this"){
     myMovies(userInput);
 }
