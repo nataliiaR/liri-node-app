@@ -1,7 +1,5 @@
 require("dotenv").config();
-var keys = require("./keys.js");
-var Spotify = require('node-spotify-api');
-var spotify = new Spotify(keys.spotify);
+
 var fs = require("fs");
 
 var mySpotify = require("./spotify.js");
@@ -14,4 +12,7 @@ var userInput = process.argv.splice(3, process.argv.length).join(' ');
 
 if  (userCommand === "movie-this"){
     myMovies(userInput);
+}
+if  (userCommand === "spotify-this-song"){
+    mySpotify(userInput);
 }
