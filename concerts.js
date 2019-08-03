@@ -11,7 +11,7 @@ function myConcerts(userInput){
         artist = "Depeche Mode";
     }
 
-    var bandInTownURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+    var bandInTownURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id="+process.env.BAND_KEY;
 
     axios.get(bandInTownURL).then(function(response){
         if (response.data.length>0){
