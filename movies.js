@@ -1,6 +1,4 @@
 require("dotenv").config();
-var fs = require("fs");
-var keys = require("./keys");
 
 var axios = require("axios");
 
@@ -13,7 +11,7 @@ function myMovies(userInput){
         movie = "Get Hard";
     }
 
-    var omdbURL = "http://www.omdbapi.com/?apikey=" +  /*process.env.OMDB_KEY */ + "&t="+ movie;
+    var omdbURL = "http://www.omdbapi.com/?apikey=" +  process.env.OMDB_KEY + "&t="+ movie;
 
     axios.get(omdbURL)
         .then(function(response){

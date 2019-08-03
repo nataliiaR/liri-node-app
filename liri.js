@@ -16,3 +16,6 @@ if  (userCommand === "movie-this"){
 if  (userCommand === "spotify-this-song"){
     mySpotify(userInput);
 }
+if (userCommand === "concert-this"){
+    myConcerts(userInput);
+}
