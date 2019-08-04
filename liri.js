@@ -25,7 +25,7 @@ function runSearch(userCommand, userInput){
             fs.readFile('random.txt','utf8', (err, data) => {
                 if (err) throw err;
                 var arr = data.split(",");
-                runSearch(arr[0], arr[1])
+                runSearch(arr[0], arr[1]);
             });
             break;
     }

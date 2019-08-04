@@ -1,6 +1,7 @@
 
 var axios = require("axios");
 var moment = require("moment");
+var logger = require("./logger.js");
 
 function myConcerts(userInput){
 
@@ -15,14 +16,20 @@ function myConcerts(userInput){
 
     axios.get(bandInTownURL).then(function(response){
         if (response.data.length>0){
+            var logInfo ="";
             console.log("Here are all the concerts of "+ artist)
             for (var i=0; i<response.data.length; i++)
             {   
                 console.log("--------------------------------------");
-                console.log("Name of the venue ---- " + response.data[i].venue.name);
-                console.log("Venue location ---- " + response.data[i].venue.country + " "+ response.data[i].venue.city );
-                console.log("Date of the event ---- " + moment(response.data[i].datetime).format("MMM DD YYYY"));
+                var output = "Name of the venue ---- " + response.data[i].venue.name + 
+                "\n" + "Venue location ---- " + response.data[i].venue.country + " "+ response.data[i].venue.city+
+                "\n" + "Date of the event ---- " + moment(response.data[i].datetime).format("MMM DD YYYY");
+                console.log(output);
+                logInfo +=output+"\n"+"-----------------------------------"+"\n";
+
             }
+            var logg = new logger(logInfo);
+            logg.createLog();
         }else {
             console.log(artist + " is not in tour");
         }

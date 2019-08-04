@@ -9,6 +9,11 @@ var spotify = new Spotify({
 });
  
 function mySpotify(userInput){
+
+    if(!userInput){
+      console.log("If you haven't listen to 'Depeche Mode' band, you definitely should");
+      userInput = "Depeche Mode"; 
+    }
     spotify.search({ type: 'track', query: userInput}, function(err, data) {
     if (err) {
         return console.log('Error occurred: ' + err);
