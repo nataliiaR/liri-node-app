@@ -1,5 +1,7 @@
 
 var Spotify = require('node-spotify-api');
+var logger = require("./logger.js");
+
 var spotifyId = process.env.SPOTIFY_ID;
 var spotifySecret = process.env.SPOTIFY_SECRET;
  
@@ -18,11 +20,14 @@ function mySpotify(userInput){
     if (err) {
         return console.log('Error occurred: ' + err);
     }
- 
-    console.log("Artist: " +data.tracks.items[0].artists[0].name); 
-    console.log("Track "+ data.tracks.items[0].name);
-    console.log("Album: " +data.tracks.items[0].album.name); 
-    console.log("Track URL "+ data.tracks.items[0].external_urls.spotify);
+    var logInfo = "\n" + "Artist: " +data.tracks.items[0].artists[0].name + 
+    "\n" + "Track "+ data.tracks.items[0].name + 
+    "\n" + "Album: " +data.tracks.items[0].album.name + 
+    "\n" + "Track URL "+ data.tracks.items[0].external_urls.spotify + "\n";
+    console.log(logInfo);
+
+    var logg = new logger(logInfo);
+    logg.createLog();
     });
 }
 module.exports = mySpotify;

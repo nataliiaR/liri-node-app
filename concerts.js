@@ -21,7 +21,7 @@ function myConcerts(userInput){
             for (var i=0; i<response.data.length; i++)
             {   
                 console.log("--------------------------------------");
-                var output = "Name of the venue ---- " + response.data[i].venue.name + 
+                var output = "\n" + "You have searched for "+ userInput + "\n" + "Name of the venue ---- " + response.data[i].venue.name + 
                 "\n" + "Venue location ---- " + response.data[i].venue.country + " "+ response.data[i].venue.city+
                 "\n" + "Date of the event ---- " + moment(response.data[i].datetime).format("MMM DD YYYY");
                 console.log(output);

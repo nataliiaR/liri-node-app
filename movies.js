@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 var axios = require("axios");
+var logger = require("./logger.js");
 
 function myMovies(userInput){
     var movie = userInput;
@@ -14,15 +15,19 @@ function myMovies(userInput){
 
     axios.get(omdbURL)
         .then(function(response){
-        console.log("Title of the movie ---- " + response.data.Title);
-        console.log("Year the movie came out ---- " + response.data.Year);
-        console.log("IMDB Rating of the movie ---- " + response.data.imdbRating);
-        console.log("Rotten Tomatoes Rating of the movie ---- " + response.data.Ratings[1].Value);
-        console.log("Country where the movie was produced ---- " + response.data.Country);
-        console.log("Language of the movie ---- "  + response.data.Language);
-        console.log("Plot of the movie ---- " + response.data.Plot);
-        console.log("Actors in the movie ---- " + response.data.Actors);     
+        var logInfo = "\n" + "Title of the movie ---- " + response.data.Title +
+        "\n" + "Year the movie came out ---- " + response.data.Year +
+        "\n" + "IMDB Rating of the movie ---- " + response.data.imdbRating + 
+        "\n" + "Rotten Tomatoes Rating of the movie ---- " + response.data.Ratings[1].Value + 
+        "\n" + "Country where the movie was produced ---- " + response.data.Country + 
+        "\n" + "Language of the movie ---- "  + response.data.Language + 
+        "\n" + "Plot of the movie ---- " + response.data.Plot +
+        "\n" + "Actors in the movie ---- " + response.data.Actors;    
 
+        console.log(logInfo);
+    
+        var logg = new logger(logInfo);
+        logg.createLog();
     })
      .catch(function (error) {
         // handle error
